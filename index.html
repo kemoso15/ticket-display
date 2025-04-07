@@ -1,31 +1,44 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
-  <title>入力画面</title>
+  <meta charset="UTF-8">
+  <title>チケット番号入力</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 100px;
+    }
+    input {
+      padding: 10px;
+      font-size: 18px;
+      width: 200px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 18px;
+      margin-left: 10px;
+      cursor: pointer;
+    }
+  </style>
 </head>
 <body>
-  <h1>ユーザー情報入力</h1>
-  <form id="userForm">
-    <label for="number">番号：</label>
-    <input type="text" id="number" name="number" required><br><br>
-    <label for="name">名前：</label>
-    <input type="text" id="name" name="name" required><br><br>
-    <button type="submit">次へ</button>
+  <h1>チケット番号を入力してください</h1>
+  <form id="form">
+    <input type="number" id="ticketNumber" placeholder="例：35" required>
+    <button type="submit">表示</button>
   </form>
 
   <script>
-    document.getElementById("userForm").addEventListener("submit", function (e) {
+    document.getElementById('form').addEventListener('submit', function (e) {
       e.preventDefault();
-      const number = document.getElementById("number").value;
-      const name = document.getElementById("name").value;
+      const number = document.getElementById('ticketNumber').value;
 
-      // セッションストレージに保存
-      sessionStorage.setItem("userNumber", number);
-      sessionStorage.setItem("userName", name);
-
-      // 結果画面へ移動
-      window.location.href = "result.html";
+      // 入力が空でないかチェック
+      if (number.trim() !== '') {
+        sessionStorage.setItem('ticketNumber', number);
+        window.location.href = 'ticket.html';
+      }
     });
   </script>
 </body>

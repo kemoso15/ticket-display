@@ -2,21 +2,35 @@
 <html lang="ja">
 <head>
   <meta charset="UTF-8">
-  <title>全画面画像スクロール表示</title>
+  <title>チケット表示</title>
   <style>
-    html, body {
+    body {
       margin: 0;
       padding: 0;
-      height: 100%;
+      text-align: center;
     }
     img {
-      display: block;
       width: 100%;
+      max-width: 500px;
       height: auto;
+      display: block;
+      margin: 0 auto;
     }
   </style>
 </head>
 <body>
-  <img src="20250407_ticket2.JPG" alt="チケット画像">
+  <img id="ticketImage" alt="チケット画像が表示されます">
+
+  <script>
+    const number = sessionStorage.getItem('ticketNumber');
+    const img = document.getElementById('ticketImage');
+
+    if (number) {
+      img.src = `ticket_${number}.png`;
+      img.alt = `ticket_${number}.png`;
+    } else {
+      img.alt = '番号が指定されていません。';
+    }
+  </script>
 </body>
 </html>
