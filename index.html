@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>入力画面</title>
+</head>
+<body>
+  <h1>ユーザー情報入力</h1>
+  <form id="userForm">
+    <label for="number">番号：</label>
+    <input type="text" id="number" name="number" required><br><br>
+    <label for="name">名前：</label>
+    <input type="text" id="name" name="name" required><br><br>
+    <button type="submit">次へ</button>
+  </form>
+
+  <script>
+    document.getElementById("userForm").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const number = document.getElementById("number").value;
+      const name = document.getElementById("name").value;
+
+      // セッションストレージに保存
+      sessionStorage.setItem("userNumber", number);
+      sessionStorage.setItem("userName", name);
+
+      // 結果画面へ移動
+      window.location.href = "result.html";
+    });
+  </script>
+</body>
+</html>

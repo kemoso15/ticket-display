@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>確認画面</title>
+</head>
+<body>
+  <h1>入力内容の確認</h1>
+  <p>番号：<span id="displayNumber"></span></p>
+  <p>名前：<span id="displayName"></span></p>
+
+  <script>
+    // セッションストレージから取得
+    const number = sessionStorage.getItem("userNumber");
+    const name = sessionStorage.getItem("userName");
+
+    // 画面に表示
+    document.getElementById("displayNumber").textContent = number;
+    document.getElementById("displayName").textContent = name;
+  </script>
+</body>
+</html>
